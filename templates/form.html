@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Super Sprinter 3000 - Add new Story</title>
+        <style>  
+            input[type=number]::-webkit-inner-spin-button {
+                opacity: 1
+            }
+            input[type=number]{
+                width: 80px;
+                text-align: center;
+            }
+            button { 
+                width:100px; 
+            } 
+        </style>
+    </head>
+    <body>
+        {% if data is not none %}
+        <h1>User Story manager - Edit Story</h1>
+        <form action="/edit-story" method="post">
+            <input type="hidden" name="id" value="{{data[0]}}">
+        {% else %}
+        <h1>User Story manager - Add new Story</h1>  
+        <form action="/story-save" method="post">
+        {% endif %}
+            <label for="title">Story Title</label><br>
+                <input type="text" name="title" size="55" value="{{data[1]}}" required><br>
+            <br>
+            <label for="note">User Story</label><br>
+                <textarea name="note" rows="8" cols="54">{{data[2]}}</textarea><br>
+            <label for="criteria">Acceptance criteria</label><br>
+                <textarea name="criteria" rows="8" cols="54">{{data[3]}}</textarea><br>
+            <label for="quantity">Business Value</label><br>
+                <input type="number" name="quantity" min="100" max="1500" step="100" value={{data[4]}}>
+            <br>
+            <br>
+            <label for"time">Estimation (h)</label><br>
+                <input type="number" name="time" min="0.5" max="40" step="0.5" value={{data[5]}}>
+            <br>
+            <br>
+            <label for="status">Status</label><br>
+                <select name="status" style="width: 120px">
+                    {% for item in selectdata %}
+                    <option value={{item[0]}}>{{item[1]}}</option>
+                    {% endfor %}
+                </select><br>
+            <br>
+            <br>
+            <br>
+            {% if data is not none %}
+            <button type="submit">Update</button>
+            {% else %}
+            <button type"submit">Create</button>
+            {% endif %}
+        </form>            
+    </body>
+</html>
