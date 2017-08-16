@@ -33,11 +33,11 @@
             <label for="criteria">Acceptance criteria</label><br>
                 <textarea name="criteria" rows="8" cols="54">{{data[3]}}</textarea><br>
             <label for="quantity">Business Value</label><br>
-                <input type="number" name="quantity" min="100" max="1500" step="100" value={{data[4]}}>
+                <input type="number" name="quantity" min="100" max="1500" step="100" value="{{data[4]}}">
             <br>
             <br>
             <label for"time">Estimation (h)</label><br>
-                <input type="number" name="time" min="0.5" max="40" step="0.5" value={{data[5]}}>
+                <input type="number" name="time" min="0.5" max="40" step="0.5" value="{{data[5]}}">
             <br>
             <br>
             <label for="status">Status</label><br>
@@ -52,7 +52,7 @@
             {% if data is not none %}
             <button type="submit">Update</button>
             {% else %}
-            <button type"submit">Create</button>
+            <button type="submit">Create</button>
             {% endif %}
         </form>            
     </body>
